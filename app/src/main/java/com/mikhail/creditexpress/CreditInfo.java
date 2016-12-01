@@ -8,14 +8,16 @@ import java.io.Serializable;
 public class CreditInfo implements Serializable {
     private final String creditTime;//срок займа
     private final String creditSumm;// сумма займа
-    private final String method;//способ получени€
-    private final String interestRate;//процентна€ ставка
-    private final String timeOfConsideration;//врем€ рассмотрени€
+    private final String method;//способ получения
+    private final String interestRate;//процентная ставка
+    private final String timeOfConsideration;//время рассмотрения
     private final String partnerlink;//ссылка
     private final String SITE_URL = "http://credit-xpress.ru";
     private final String imageLink;
 
-    public CreditInfo(String timeOfConsideration, String partnerlink, String imageLink, String interestRate, String method, String creditSumm, String creditTime) {
+    public CreditInfo(String timeOfConsideration, String partnerlink,
+                      String imageLink, String interestRate, String method,
+                      String creditSumm, String creditTime) {
         this.timeOfConsideration = timeOfConsideration;
         this.partnerlink = partnerlink;
         this.imageLink = imageLink;

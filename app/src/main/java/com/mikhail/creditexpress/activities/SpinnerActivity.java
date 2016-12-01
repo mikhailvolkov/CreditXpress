@@ -12,23 +12,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mikhail.creditexpress.CreditInfo;
-import com.mikhail.creditexpress.NodeKey;
 import com.mikhail.creditexpress.R;
 import com.mikhail.creditexpress.filter.Filter;
 
-import java.util.HashMap;
 import java.util.List;
 
-
-
 /**
- * Created by Misha on 17.12.2014.
+ * @author Volkov Mikhail
  */
 public class SpinnerActivity extends Activity {
     private final String[] summData = {"10000 руб.", "15000 руб.", "20000 руб.", "25000 руб.", "30000 руб.", "40000 руб.", "50000 руб.", "60000 руб.", "70000 руб.", "80000 руб.", "90000 руб."};
     private final String[] timeData = {"15 дней", "25 дней", "30 дней", "35 дней", "45 дней", "60 дней", "3 мес.", "6 мес.", "12 мес.", "18 мес."};
     private final String[] methodData = {"Карта", "Счет", "Qiwi", "Contact", "Дом", "Офис"};
-    private static List<CreditInfo> creditDataCollection;
+    private List<CreditInfo> creditDataCollection;
     private Spinner summ;
     private Spinner time;
     private Spinner method;
@@ -38,7 +34,7 @@ public class SpinnerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.filter);
         Intent intent = getIntent();
-        creditDataCollection= (List<CreditInfo>) intent.getSerializableExtra("data");
+        creditDataCollection = (List<CreditInfo>) intent.getSerializableExtra("data");
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -51,10 +47,6 @@ public class SpinnerActivity extends Activity {
         configurateSpinner(time, getAdapter(timeData));
         configurateSpinner(method, getAdapter(methodData));
 
-    }
-
-    public static void setCreditsList(List<CreditInfo> input) {
-        creditDataCollection = input;
     }
 
     private void initSpinners() {
@@ -70,14 +62,13 @@ public class SpinnerActivity extends Activity {
     }
 
     public void filtrateCreditList(View view) {
-        Filter filter = new Filter(creditDataCollection,this);
+        Filter filter = new Filter(creditDataCollection, this);
         List<CreditInfo> filtrated = filter.filtrate(
                 getValue(summ.getSelectedItem().toString()),
                 getValue(time.getSelectedItem().toString()),
                 method.getSelectedItem().toString().toLowerCase());
         if (filtrated.size() == 0) {
             showToast();
-            return;
         } else {
             Intent intent = new Intent(this, FilterResultActivity.class);
             intent.putExtra("filtratedList", (java.io.Serializable) filtrated);
@@ -86,7 +77,6 @@ public class SpinnerActivity extends Activity {
     }
 
     public void showToast() {
-        //создаем и отображаем текстовое уведомление
         Toast toast = Toast.makeText(getApplicationContext(),
                 "Таких организаций нет!", Toast.LENGTH_SHORT);
         toast.show();
@@ -118,6 +108,5 @@ public class SpinnerActivity extends Activity {
         return true;
 
     }
-
 
 }

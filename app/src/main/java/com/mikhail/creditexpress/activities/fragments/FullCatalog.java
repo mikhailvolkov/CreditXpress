@@ -12,20 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.mikhail.creditexpress.CreditInfo;
 import com.mikhail.creditexpress.DataBinder;
 import com.mikhail.creditexpress.ListDataSender;
-import com.mikhail.creditexpress.ListUtil;
+import com.mikhail.creditexpress.utils.ListUtil;
 import com.mikhail.creditexpress.R;
-import com.mikhail.creditexpress.activities.CreditActivity;
-import com.mikhail.creditexpress.tasks.CreditTaskExecutor;
 import com.mikhail.creditexpress.view.SlidingTabLayout;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,9 +45,7 @@ public class FullCatalog extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.catalog_full, container, false);
-
         return rootView;
     }
 
@@ -60,7 +53,7 @@ public class FullCatalog extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        mViewPager.setAdapter(new SamplePagerAdapter());
+        mViewPager.setAdapter(new CatalogAdapter());
 
         // Give the SlidingTabLayout the ViewPager, this must be
         // done AFTER the ViewPager has had it's PagerAdapter set.
@@ -69,8 +62,7 @@ public class FullCatalog extends Fragment {
 
     }
 
-    // Adapter
-    public class SamplePagerAdapter extends PagerAdapter {
+    public class CatalogAdapter extends PagerAdapter {
 
         /**
          * Return the number of pages to display
@@ -145,13 +137,7 @@ public class FullCatalog extends Fragment {
         private void onItemClicked(ListView list, List<CreditInfo> data) {
             final ListDataSender sender = new ListDataSender(data, context);
             // Click event for single list row
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
-                    startActivity(sender.getIntent(position));
-                }
-            });
+            list.setOnItemClickListener((parent, view, position, id) -> startActivity(sender.getIntent(position)));
 
         }
         /**

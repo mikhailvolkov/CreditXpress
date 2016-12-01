@@ -1,8 +1,5 @@
 package com.mikhail.creditexpress.view;
 
-/**
- * @author Volkov Mikhail
- */
 import android.R;
 import android.content.Context;
 import android.graphics.Canvas;

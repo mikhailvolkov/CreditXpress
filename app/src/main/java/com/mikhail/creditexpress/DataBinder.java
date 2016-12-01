@@ -2,19 +2,13 @@ package com.mikhail.creditexpress;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,10 +21,11 @@ public class DataBinder extends BaseAdapter {
         TextView summOfMortgage;
         TextView timeOfMortgage;
     }
+
     private int size = 0;
-    LayoutInflater inflater;
-    List<CreditInfo> creditDataCollection;
-    ViewHolder holder;
+    private LayoutInflater inflater;
+    private List<CreditInfo> creditDataCollection;
+    private ViewHolder holder;
     private Activity act;
 
     public DataBinder(Activity act, List<CreditInfo> map) {
@@ -39,12 +34,9 @@ public class DataBinder extends BaseAdapter {
         inflater = (LayoutInflater) act.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
-
     @Override
     public void notifyDataSetChanged() {
         size = creditDataCollection.size();
-
         super.notifyDataSetChanged();
     }
 
@@ -69,20 +61,18 @@ public class DataBinder extends BaseAdapter {
 
 
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        View vi=convertView;
-        if(convertView==null){
+        View vi = convertView;
+        if (convertView == null) {
             vi = inflater.inflate(R.layout.list_row, null);
             holder = new ViewHolder();
 
-            holder.timeOfMortgage=(TextView)vi.findViewById(R.id.timeOfMortgageValue);//срок займа
-            holder.summOfMortgage=(TextView)vi.findViewById(R.id.summOfMortgageValue);//сумма займа
-            holder.creditIcon=(ImageView)vi.findViewById(R.id.list_image);//пикча кредита
+            holder.timeOfMortgage = (TextView) vi.findViewById(R.id.timeOfMortgageValue);//срок займа
+            holder.summOfMortgage = (TextView) vi.findViewById(R.id.summOfMortgageValue);//сумма займа
+            holder.creditIcon = (ImageView) vi.findViewById(R.id.list_image);//пикча кредита
 
             vi.setTag(holder);
-        }
-        else{
-            holder = (ViewHolder)vi.getTag();
+        } else {
+            holder = (ViewHolder) vi.getTag();
         }
 
         // Setting all values in listview

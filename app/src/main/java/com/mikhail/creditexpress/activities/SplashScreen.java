@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.mikhail.creditexpress.CreditInfo;
 import com.mikhail.creditexpress.R;
-import com.mikhail.creditexpress.tasks.CreditTaskExecutor;
+import com.mikhail.creditexpress.tasks.CreditTask;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -43,8 +43,6 @@ public class SplashScreen extends Activity {
                 progressView.startAnimation();
             }
         }, 1000);
-        //wait 5 sec
-        // thread for displaying the SplashScreen
         final Intent i = new Intent();;
         splashTread = new Thread() {
             @Override
@@ -56,7 +54,7 @@ public class SplashScreen extends Activity {
                                 "http://credit-xpress.ru/cash", "http://credit-xpress.ru/kredity");
                         List<List<CreditInfo>> data = new ArrayList<>();
                         for (String link : links) {
-                            data.add(CreditTaskExecutor.execute(link));
+                            data.add((CreditTask) new CreditTask().execute(links));
                         }
                         i.putExtra("data", (Serializable) data);
                     }
@@ -64,10 +62,8 @@ public class SplashScreen extends Activity {
                 } catch(InterruptedException e) {}
                 finally {
                     finish();
-
                     i.setClass(sPlashScreen, CreditActivity.class);
                     startActivity(i);
-
                 }
             }
         };

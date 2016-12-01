@@ -1,4 +1,6 @@
-package com.mikhail.creditexpress;
+package com.mikhail.creditexpress.utils;
+
+import com.mikhail.creditexpress.CreditInfo;
 
 import java.util.ArrayList;
 import java.util.List;

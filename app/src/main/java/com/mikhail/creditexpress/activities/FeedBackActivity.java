@@ -15,8 +15,9 @@ import com.mikhail.creditexpress.R;
 
 
 /**
- * Created by Misha on 09.02.2015.
+ * @author Volkov Mikhail
  */
+
 public class FeedBackActivity extends Activity {
     private String email;
     private String text;

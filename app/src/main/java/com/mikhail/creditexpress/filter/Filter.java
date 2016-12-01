@@ -1,13 +1,8 @@
 package com.mikhail.creditexpress.filter;
 
 import android.content.Context;
-import android.widget.Toast;
-
 import com.mikhail.creditexpress.CreditInfo;
-import com.mikhail.creditexpress.NodeKey;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,8 +20,8 @@ public class Filter {
     public List<CreditInfo> filtrate(int summ, int time, String method) {
         List<CreditInfo> filtratedCredits = new ArrayList<>();
         for (CreditInfo credit : credits) {
-            if ((getValue(credit.getCreditSumm()) >= summ )
-                    && getValue(credit.getCreditTime()) >= time
+            if ((convertValue(credit.getCreditSumm()) >= summ )
+                    && convertValue(credit.getCreditTime()) >= time
                     && credit.getMethod().contains(method)) {
                 filtratedCredits.add(credit);
             }
@@ -35,25 +30,21 @@ public class Filter {
         return filtratedCredits;
     }
 
-
-    public int getValue(String input) {
+    public int convertValue(String input) {
         String[] mas = input.split(" ");
-        if(input.equals("-")){
+        if (input.equals("-")) {
             return 365;
         }
-        if (mas[2].equals("нед.")) {
-            return Integer.parseInt(mas[1]) * 7;
+        switch (mas[2]) {
+            case "нед.":
+                return Integer.parseInt(mas[1]) * 7;
+            case "мес.":
+                return Integer.parseInt(mas[1]) * 31;
+            case "лет":
+                return Integer.parseInt(mas[1]) * 365;
+            case "млн.":
+                return Integer.parseInt(mas[1]) * 1000000;
         }
-        if (mas[2].equals("мес.")) {
-            return Integer.parseInt(mas[1]) * 31;
-        }
-        if (mas[2].equals("лет")) {
-            return Integer.parseInt(mas[1]) * 365;
-        }
-        if (mas[2].equals("млн.")) {
-            return Integer.parseInt(mas[1]) * 1000000;
-        }
-
         return Integer.parseInt(mas[1]);
     }
 }

@@ -10,12 +10,17 @@ import com.mikhail.creditexpress.activities.adapters.PromotionRecyclerAdapter;
 
 import java.util.ArrayList;
 
-public class      PromotionActivity extends
-        ActionBarActivity {
-    private RecyclerView mRecyclerView;
+/**
+ * @author Volkov Mikhail
+ */
 
+public class PromotionActivity extends
+        ActionBarActivity {
+
+    private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private PromotionRecyclerAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +40,8 @@ public class      PromotionActivity extends
     }
 
     private ArrayList<String> getDataSet() {
-
         ArrayList<String> mDataSet = new ArrayList();
-
+        //тест работы cardview
         for (int i = 0; i < 100; i++) {
             mDataSet.add(i, "item" + i);
         }

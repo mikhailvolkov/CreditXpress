@@ -19,14 +19,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mikhail.creditexpress.CreditInfo;
-import com.mikhail.creditexpress.ListUtil;
+import com.mikhail.creditexpress.utils.ListUtil;
 import com.mikhail.creditexpress.R;
 import com.mikhail.creditexpress.activities.fragments.FullCatalog;
 import com.mikhail.creditexpress.view.SlidingMenuListAdapter;
 import java.io.Serializable;
 import java.util.List;
 
-
+/**
+ * @author Volkov Mikhail
+ */
 public class CreditActivity extends
         ActionBarActivity {
 
@@ -123,7 +125,6 @@ public class CreditActivity extends
     /**
      * Swaps fragments in the main content view
      */
-
     private void selectItem(int position) {
         Fragment fragment = null;
         // Update the main content by replacing fragments
@@ -159,9 +160,6 @@ public class CreditActivity extends
             ((TextView) findViewById(R.id.action_bar_title)).setText(
                     Html.fromHtml("<font color=\"white\">" + mScreenTitles[position] + "</font>"));
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
-            // Error
-            Log.e(this.getClass().getName(), "Error. Fragment is not created");
         }
     }
 

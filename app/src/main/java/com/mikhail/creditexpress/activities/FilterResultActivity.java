@@ -18,6 +18,9 @@ import com.mikhail.creditexpress.R;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Volkov Mikhail
+ */
 
 public class FilterResultActivity extends Activity {
     @Override
@@ -42,14 +45,7 @@ public class FilterResultActivity extends Activity {
     }
     private void onItemClicked(List<CreditInfo> filtrated, ListView list) {
         final ListDataSender sender = new ListDataSender(filtrated, FilterResultActivity.this);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                startActivity(sender.getIntent(position));
-            }
-        });
-
+        list.setOnItemClickListener((parent, view, position, id) -> startActivity(sender.getIntent(position)));
     }
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
