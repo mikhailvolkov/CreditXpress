@@ -11,13 +11,19 @@ import android.view.MotionEvent;
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.mikhail.creditexpress.CreditInfo;
+import com.mikhail.creditexpress.PartnerInfo;
+import com.mikhail.creditexpress.PromotionInfo;
 import com.mikhail.creditexpress.R;
-import com.mikhail.creditexpress.tasks.CreditTask;
+import com.mikhail.creditexpress.parser.CreditInfoParser;
+import com.mikhail.creditexpress.parser.HtmlParser;
+import com.mikhail.creditexpress.parser.PromotionInfoParser;
+import com.mikhail.creditexpress.tasks.TaskExecutor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * @author Volkov Mikhail
  */
@@ -28,7 +34,9 @@ public class SplashScreen extends Activity {
 
     private Thread splashTread;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,24 +51,27 @@ public class SplashScreen extends Activity {
                 progressView.startAnimation();
             }
         }, 1000);
-        final Intent i = new Intent();;
+        final Intent i = new Intent();
         splashTread = new Thread() {
             @Override
             public void run() {
                 try {
-                    synchronized(this){
+                    synchronized (this) {
                         wait(_splashTime);
                         List<String> links = Arrays.asList("http://credit-xpress.ru/online", "http://credit-xpress.ru/online?start=17",
                                 "http://credit-xpress.ru/cash", "http://credit-xpress.ru/kredity");
-                        List<List<CreditInfo>> data = new ArrayList<>();
+                        List<List<? extends Parseable>> data = new ArrayList<>();
+                        HtmlParser<CreditInfo> parser = new CreditInfoParser();
                         for (String link : links) {
-                            data.add((CreditTask) new CreditTask().execute(links));
+                            List<? extends Parseable> info = new TaskExecutor().execute(parser, link);
+                            data.add(info);
                         }
-                        i.putExtra("data", (Serializable) data);
+                        i.putExtra("credit_data", (Serializable) data);
+                        i.putExtra("promotion_data", (Serializable) getPromotionData());
                     }
 
-                } catch(InterruptedException e) {}
-                finally {
+                } catch (InterruptedException e) {
+                } finally {
                     finish();
                     i.setClass(sPlashScreen, CreditActivity.class);
                     startActivity(i);
@@ -71,12 +82,18 @@ public class SplashScreen extends Activity {
 
     }
 
+    private List<PromotionInfo> getPromotionData() {
+        HtmlParser<PromotionInfo> parser = new PromotionInfoParser();
+        List<? extends Parseable> info = new TaskExecutor().execute(parser, PartnerInfo.SITE_URL);
+        return (List<PromotionInfo>) info;
+    }
+
 
     //Function that will handle the touch
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            synchronized(splashTread){
+            synchronized (splashTread) {
                 splashTread.notifyAll();
             }
         }

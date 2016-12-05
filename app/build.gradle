@@ -10,8 +10,8 @@ android {
         applicationId "com.mikhail.creditexpress"
         minSdkVersion 15
         targetSdkVersion 18
-        versionCode 13
-        versionName "1.1.1"
+        versionCode 16
+        versionName "1.1.4"
         jackOptions {
             enabled true;
         }

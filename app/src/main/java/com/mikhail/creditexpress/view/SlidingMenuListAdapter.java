@@ -15,6 +15,7 @@ import com.mikhail.creditexpress.R;
 public class SlidingMenuListAdapter extends ArrayAdapter<String> {
     private Activity context;
     private String[] listRowsText;
+
     public SlidingMenuListAdapter(Activity context, String[] listRowsText) {
         super(context, R.layout.drawer_list_item, listRowsText);
         this.context = context;
@@ -22,24 +23,29 @@ public class SlidingMenuListAdapter extends ArrayAdapter<String> {
     }
 
     public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View rowView=inflater.inflate(R.layout.drawer_list_item, null,true);
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.drawer_list_item, null, true);
 
         TextView textView = (TextView) rowView.findViewById(R.id.sliding_menu_listrow);
         textView.setText(listRowsText[position]);
-        switch (position){
-            case  0:
+        switch (position) {
+            case 0:
                 textView.setCompoundDrawablesWithIntrinsicBounds(
-                        context.getResources().getDrawable(R.drawable.catalog),null,null,null);
-             break;
+                        context.getResources().getDrawable(R.drawable.catalog), null, null, null);
+                break;
             case 1:
                 textView.setCompoundDrawablesWithIntrinsicBounds(
-                        context.getResources().getDrawable(R.drawable.search),null,null,null);
+                        context.getResources().getDrawable(R.drawable.search), null, null, null);
                 break;
-            case  2:
+            case 2:
                 textView.setCompoundDrawablesWithIntrinsicBounds(
-                        context.getResources().getDrawable(R.drawable.feed),null,null,null);
+                        context.getResources().getDrawable(R.drawable.promotion), null, null, null);
                 break;
+            case 3:
+                textView.setCompoundDrawablesWithIntrinsicBounds(
+                        context.getResources().getDrawable(R.drawable.help), null, null, null);
+                break;
+
         }
         return rowView;
     }

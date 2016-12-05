@@ -1,32 +1,30 @@
 package com.mikhail.creditexpress;
 
+
+import com.mikhail.creditexpress.activities.Parseable;
+
 import java.io.Serializable;
 
 /**
  * @author Volkov Mikhail
  */
-public class CreditInfo implements Serializable {
+public class CreditInfo  extends  PartnerInfo implements Serializable, Parseable {
     private final String creditTime;//срок займа
     private final String creditSumm;// сумма займа
     private final String method;//способ получения
     private final String interestRate;//процентная ставка
     private final String timeOfConsideration;//время рассмотрения
-    private final String partnerlink;//ссылка
-    private final String SITE_URL = "http://credit-xpress.ru";
     private final String imageLink;
 
-    public CreditInfo(String timeOfConsideration, String partnerlink,
-                      String imageLink, String interestRate, String method,
-                      String creditSumm, String creditTime) {
-        this.timeOfConsideration = timeOfConsideration;
-        this.partnerlink = partnerlink;
-        this.imageLink = imageLink;
-        this.interestRate = interestRate;
-        this.method = method;
-        this.creditSumm = creditSumm;
+    public CreditInfo(String partnerlink, String creditTime, String creditSumm, String method, String interestRate, String timeOfConsideration, String imageLink) {
+        super(partnerlink);
         this.creditTime = creditTime;
+        this.creditSumm = creditSumm;
+        this.method = method;
+        this.interestRate = interestRate;
+        this.timeOfConsideration = timeOfConsideration;
+        this.imageLink = imageLink;
     }
-
 
     public String getCreditTime() {
         return creditTime;
@@ -46,10 +44,6 @@ public class CreditInfo implements Serializable {
 
     public String getTimeOfConsideration() {
         return timeOfConsideration;
-    }
-
-    public String getPartnerLink() {
-        return SITE_URL + partnerlink;
     }
 
     public String getImageLink() {

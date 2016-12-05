@@ -19,10 +19,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mikhail.creditexpress.CreditInfo;
+import com.mikhail.creditexpress.PromotionInfo;
 import com.mikhail.creditexpress.utils.ListUtil;
 import com.mikhail.creditexpress.R;
 import com.mikhail.creditexpress.activities.fragments.FullCatalog;
 import com.mikhail.creditexpress.view.SlidingMenuListAdapter;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class CreditActivity extends
         setContentView(R.layout.fragment_tab_4);
 
         createLeftSlidingMenu(savedInstanceState);
-        data = (List<List<CreditInfo>>) getIntent().getSerializableExtra("data");
+        data = (List<List<CreditInfo>>) getIntent().getSerializableExtra("credit_data");
 
     }
 
@@ -139,6 +141,7 @@ public class CreditActivity extends
                 break;
             case 2:
                 Intent promotionIntent = new Intent(CreditActivity.this, PromotionActivity.class);
+                promotionIntent.putExtra("promotion_data", getIntent().getSerializableExtra("promotion_data"));
                 startActivity(promotionIntent);
                 break;
             case 3:

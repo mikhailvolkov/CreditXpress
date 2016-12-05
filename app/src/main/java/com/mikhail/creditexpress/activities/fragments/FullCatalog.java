@@ -137,7 +137,12 @@ public class FullCatalog extends Fragment {
         private void onItemClicked(ListView list, List<CreditInfo> data) {
             final ListDataSender sender = new ListDataSender(data, context);
             // Click event for single list row
-            list.setOnItemClickListener((parent, view, position, id) -> startActivity(sender.getIntent(position)));
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   startActivity(sender.getIntent(position));
+                }
+            });
 
         }
         /**

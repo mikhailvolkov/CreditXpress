@@ -1,52 +1,68 @@
 package com.mikhail.creditexpress.activities;
 
+import android.app.ActionBar;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.mikhail.creditexpress.PromotionInfo;
 import com.mikhail.creditexpress.R;
 import com.mikhail.creditexpress.activities.adapters.PromotionRecyclerAdapter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Volkov Mikhail
  */
 
 public class PromotionActivity extends
-        ActionBarActivity {
+        Activity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private PromotionRecyclerAdapter mAdapter;
+    private RecyclerView recycler;
+    private RecyclerView.LayoutManager layoutManager;
+    private PromotionRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.promotion_recycler_view);
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.action_bar_title_layout);
+        ((TextView) findViewById(R.id.action_bar_title)).setText(
+                Html.fromHtml("<font color=\"white\">" + "Акции" + "</font>"));
+        ColorDrawable colorDrawable = new ColorDrawable();
+        colorDrawable.setColor(getResources().getColor(R.color.actionBarColor));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
-        ArrayList<String> myDataset = getDataSet();
+        recycler = (RecyclerView) findViewById(R.id.promotion_recycler_view);
+        recycler.setHasFixedSize(true);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.promotion_recycler_view);
+        layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
 
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new PromotionRecyclerAdapter(myDataset);
-        mRecyclerView.setAdapter(mAdapter);
+        adapter = new PromotionRecyclerAdapter((List<PromotionInfo>) getIntent().getSerializableExtra("promotion_data"), this);
+        recycler.setAdapter(adapter);
     }
 
-    private ArrayList<String> getDataSet() {
-        ArrayList<String> mDataSet = new ArrayList();
-        //тест работы cardview
-        for (int i = 0; i < 100; i++) {
-            mDataSet.add(i, "item" + i);
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId) {
+            case android.R.id.home:
+                finish();
+                break;
         }
-        mDataSet.add(mDataSet.size(), "пункт" + mDataSet.size() + 1);
-        return mDataSet;
+        return true;
+
     }
 
 }

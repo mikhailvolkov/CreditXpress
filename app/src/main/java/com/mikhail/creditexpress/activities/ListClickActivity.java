@@ -47,7 +47,7 @@ public class ListClickActivity extends Activity {
         Intent i = getIntent();
 
         CreditInfo creditInfo = (CreditInfo) i.getSerializableExtra("credit_info");
-        partnerLink = creditInfo.getPartnerLink();
+        partnerLink = creditInfo.getPartnerlink();
         Picasso.with(this)
                 .load(creditInfo.getImageLink())
                 .into(icon);

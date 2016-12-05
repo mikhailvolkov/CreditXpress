@@ -45,7 +45,12 @@ public class FilterResultActivity extends Activity {
     }
     private void onItemClicked(List<CreditInfo> filtrated, ListView list) {
         final ListDataSender sender = new ListDataSender(filtrated, FilterResultActivity.this);
-        list.setOnItemClickListener((parent, view, position, id) -> startActivity(sender.getIntent(position)));
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FilterResultActivity.this.startActivity(sender.getIntent(position));
+            }
+        });
     }
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
