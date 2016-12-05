@@ -1,4 +1,4 @@
-package com.mikhail.creditexpress.activities;
+package com.mikhail.creditexpress;
 
 /**
  * @author Volkov Mikhail

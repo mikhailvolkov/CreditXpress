@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.mikhail.creditexpress.CreditInfo;
+import com.mikhail.creditexpress.Parseable;
 import com.mikhail.creditexpress.PartnerInfo;
 import com.mikhail.creditexpress.PromotionInfo;
 import com.mikhail.creditexpress.R;

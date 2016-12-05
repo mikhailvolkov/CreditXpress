@@ -1,8 +1,6 @@
 package com.mikhail.creditexpress;
 
 
-import com.mikhail.creditexpress.activities.Parseable;
-
 import java.io.Serializable;
 
 /**

@@ -2,7 +2,7 @@ package com.mikhail.creditexpress.tasks;
 
 import android.os.AsyncTask;
 
-import com.mikhail.creditexpress.activities.Parseable;
+import com.mikhail.creditexpress.Parseable;
 import com.mikhail.creditexpress.parser.HtmlParser;
 
 import java.io.IOException;

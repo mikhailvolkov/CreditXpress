@@ -1,6 +1,6 @@
 package com.mikhail.creditexpress.tasks;
 
-import com.mikhail.creditexpress.activities.Parseable;
+import com.mikhail.creditexpress.Parseable;
 import com.mikhail.creditexpress.parser.HtmlParser;
 
 import java.util.List;

@@ -1,7 +1,5 @@
 package com.mikhail.creditexpress;
 
-import com.mikhail.creditexpress.activities.Parseable;
-
 /**
  * @author Volkov Mikhail
  */

@@ -1,6 +1,6 @@
 package com.mikhail.creditexpress.parser;
 
-import com.mikhail.creditexpress.activities.Parseable;
+import com.mikhail.creditexpress.Parseable;
 
 import java.io.IOException;
 import java.util.List;
