@@ -8,6 +8,9 @@ import com.mikhail.creditexpress.activities.ListClickActivity;
 import java.util.List;
 
 /**
+ * Служит для заполнения передачи информации о кредитах при клике на организацию в каталоге организаций,
+ * а также в отфильтрованном списке
+ * @see com.mikhail.creditexpress.activities.ListClickActivity - указанное активити открывается при клике на элемент списка
  * @author Volkov Mikhail
  */
 public class ListDataSender {

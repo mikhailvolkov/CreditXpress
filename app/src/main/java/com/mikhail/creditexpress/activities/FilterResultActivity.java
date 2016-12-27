@@ -11,11 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mikhail.creditexpress.CreditInfo;
-import com.mikhail.creditexpress.DataBinder;
+import com.mikhail.creditexpress.activities.adapters.DataBinder;
 import com.mikhail.creditexpress.ListDataSender;
 import com.mikhail.creditexpress.R;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**

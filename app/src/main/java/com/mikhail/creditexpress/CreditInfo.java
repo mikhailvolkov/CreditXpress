@@ -4,9 +4,12 @@ package com.mikhail.creditexpress;
 import java.io.Serializable;
 
 /**
+ * Используется для хранения информации о кредитной организации,
+ * список данных организаций заполняется с помощью
+ * @see com.mikhail.creditexpress.parser.CreditInfoParser
  * @author Volkov Mikhail
  */
-public class CreditInfo  extends  PartnerInfo implements Serializable, Parseable {
+public class CreditInfo  extends Info implements Serializable, Parseable {
     private final String creditTime;//срок займа
     private final String creditSumm;// сумма займа
     private final String method;//способ получения

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Производит фильтрацию списка кредитных организаций по параметрам заполняемым в
+ * @see com.mikhail.creditexpress.activities.FilterActivity
  * @author Volkov Mikhail
  */
 public class Filter {

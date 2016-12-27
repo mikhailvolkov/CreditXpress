@@ -1,4 +1,4 @@
-package com.mikhail.creditexpress;
+package com.mikhail.creditexpress.activities.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.mikhail.creditexpress.CreditInfo;
+import com.mikhail.creditexpress.R;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
+ * Адаптер для ListView с кредитными организациями
  * @author Volkov Mikhail
  */
 public class DataBinder extends BaseAdapter {
@@ -28,9 +32,9 @@ public class DataBinder extends BaseAdapter {
     private ViewHolder holder;
     private Activity act;
 
-    public DataBinder(Activity act, List<CreditInfo> map) {
+    public DataBinder(Activity act, List<CreditInfo> data) {
         this.act = act;
-        this.creditDataCollection = map;
+        this.creditDataCollection = data;
         inflater = (LayoutInflater) act.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -75,7 +79,6 @@ public class DataBinder extends BaseAdapter {
             holder = (ViewHolder) vi.getTag();
         }
 
-        // Setting all values in listview
         holder.timeOfMortgage.setText(creditDataCollection.get(position).getCreditTime());
         holder.summOfMortgage.setText(creditDataCollection.get(position).getCreditSumm());
 

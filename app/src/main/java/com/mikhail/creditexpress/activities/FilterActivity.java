@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * @author Volkov Mikhail
  */
-public class SpinnerActivity extends Activity {
+public class FilterActivity extends Activity {
     private final String[] summData = {"10000 руб.", "15000 руб.", "20000 руб.", "25000 руб.", "30000 руб.", "40000 руб.", "50000 руб.", "60000 руб.", "70000 руб.", "80000 руб.", "90000 руб."};
     private final String[] timeData = {"15 дней", "25 дней", "30 дней", "35 дней", "45 дней", "60 дней", "3 мес.", "6 мес.", "12 мес.", "18 мес."};
     private final String[] methodData = {"Карта", "Счет", "Qiwi", "Contact", "Дом", "Офис"};

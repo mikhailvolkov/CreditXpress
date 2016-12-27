@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Таск, который выполняется загрузку данных с помощью указанного парсера
  * @author Volkov Mikhail
  */
 public class ParseInfoTask extends AsyncTask<String, Void, List<? extends Parseable>> {

@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.mikhail.creditexpress.CreditInfo;
-import com.mikhail.creditexpress.DataBinder;
+import com.mikhail.creditexpress.activities.adapters.DataBinder;
 import com.mikhail.creditexpress.ListDataSender;
 import com.mikhail.creditexpress.utils.ListUtil;
 import com.mikhail.creditexpress.R;
@@ -24,6 +24,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Фрагмент для отображения каталога кредитных организаций, включает в себя табы с типами кредитов
+ * Отображается при клике на меню, реализованное в
+ * @see com.mikhail.creditexpress.view.SlidingMenuListAdapter
  * @author Volkov Mikhail
  */
 @SuppressLint("ValidFragment")

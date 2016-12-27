@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Адаптер для CardView, использующемся в разделе "Акции"
+ * @see com.mikhail.creditexpress.activities.PromotionActivity - активити данного раздела
  * @author Volkov Mikhail
  */
 public class PromotionRecyclerAdapter extends RecyclerView.Adapter<PromotionRecyclerAdapter.ViewHolder>{

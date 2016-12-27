@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Парсит информацию о кредитных организациях
  * @author Volkov Mikhail
  */
 public class CreditInfoParser extends HtmlParser<CreditInfo> {

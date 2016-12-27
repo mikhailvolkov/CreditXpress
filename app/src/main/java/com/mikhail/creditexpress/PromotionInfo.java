@@ -1,9 +1,10 @@
 package com.mikhail.creditexpress;
 
 /**
+ * Используется для хранения информации карточки раздела "Акции"
  * @author Volkov Mikhail
  */
-public class PromotionInfo extends PartnerInfo implements Parseable {
+public class PromotionInfo extends Info implements Parseable {
     private final String sloganHeader;
     private final String sloganBody;
     private final String organizationImage;//пикча кредитной организации

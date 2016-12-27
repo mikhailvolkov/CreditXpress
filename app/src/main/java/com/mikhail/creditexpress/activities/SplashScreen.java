@@ -11,8 +11,8 @@ import android.view.MotionEvent;
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.mikhail.creditexpress.CreditInfo;
+import com.mikhail.creditexpress.Info;
 import com.mikhail.creditexpress.Parseable;
-import com.mikhail.creditexpress.PartnerInfo;
 import com.mikhail.creditexpress.PromotionInfo;
 import com.mikhail.creditexpress.R;
 import com.mikhail.creditexpress.parser.CreditInfoParser;
@@ -85,7 +85,7 @@ public class SplashScreen extends Activity {
 
     private List<PromotionInfo> getPromotionData() {
         HtmlParser<PromotionInfo> parser = new PromotionInfoParser();
-        List<? extends Parseable> info = new TaskExecutor().execute(parser, PartnerInfo.SITE_URL);
+        List<? extends Parseable> info = new TaskExecutor().execute(parser, Info.SITE_URL);
         return (List<PromotionInfo>) info;
     }
 

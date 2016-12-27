@@ -1,6 +1,5 @@
 package com.mikhail.creditexpress.parser;
 
-import com.mikhail.creditexpress.PartnerInfo;
 import com.mikhail.creditexpress.PromotionInfo;
 
 import org.jsoup.Jsoup;
@@ -11,10 +10,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
+ * Парсит информацию об акциях
  * @author Volkov Mikhail
  */
 public class PromotionInfoParser extends HtmlParser<PromotionInfo> {

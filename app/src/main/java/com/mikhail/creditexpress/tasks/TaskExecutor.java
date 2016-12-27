@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Активирует
+ * @see ParseInfoTask
  * @author Volkov Mikhail
  */
 public class TaskExecutor {

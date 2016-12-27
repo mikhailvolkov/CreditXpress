@@ -135,7 +135,7 @@ public class CreditActivity extends
                 fragment = new FullCatalog(data, CreditActivity.this, this);
                 break;
             case 1:
-                Intent filterIntent = new Intent(CreditActivity.this, SpinnerActivity.class);
+                Intent filterIntent = new Intent(CreditActivity.this, FilterActivity.class);
                 filterIntent.putExtra("data", (Serializable) ListUtil.getDataInSingleList(data));
                 startActivity(filterIntent);
                 break;

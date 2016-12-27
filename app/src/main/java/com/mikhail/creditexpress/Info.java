@@ -3,13 +3,16 @@ package com.mikhail.creditexpress;
 import java.io.Serializable;
 
 /**
+ * Родительский класс для
+ * @see  com.mikhail.creditexpress.CreditInfo
+ * @see  com.mikhail.creditexpress.PromotionInfo
  * @author Volkov Mikhail
  */
-public class PartnerInfo implements Serializable {
+public class Info implements Serializable {
     private final String partnerlink;//ссылка
     public final static String SITE_URL = "http://credit-xpress.ru";
 
-    public PartnerInfo(String partnerlink) {
+    public Info(String partnerlink) {
         this.partnerlink = partnerlink;
     }
 

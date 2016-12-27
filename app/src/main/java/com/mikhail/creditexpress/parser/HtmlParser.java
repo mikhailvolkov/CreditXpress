@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Абстрактный класс парсера данных с сайта
+ * наследники
+ * @see CreditInfoParser
+ * @see PromotionInfoParser
  * @author Volkov Mikhail
  */
 public abstract class HtmlParser<T extends Parseable> {
