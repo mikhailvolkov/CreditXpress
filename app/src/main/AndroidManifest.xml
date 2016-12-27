@@ -15,7 +15,7 @@
                 android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity android:name="com.mikhail.creditexpress.activities.ListClickActivity" />
-        <activity android:name="com.mikhail.creditexpress.activities.SpinnerActivity" />
+        <activity android:name="com.mikhail.creditexpress.activities.FilterActivity" />
         <activity android:name="com.mikhail.creditexpress.activities.FilterResultActivity" />
         <activity android:name="com.mikhail.creditexpress.activities.FeedBackActivity" />
         <activity android:name="com.mikhail.creditexpress.activities.SplashScreen">
