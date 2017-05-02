@@ -62,7 +62,7 @@ public class FilterActivity extends Activity {
     }
 
     public void filtrateCreditList(View view) {
-        Filter filter = new Filter(creditDataCollection, this);
+        Filter filter = new Filter(creditDataCollection);
         List<CreditInfo> filtrated = filter.filtrate(
                 getValue(summ.getSelectedItem().toString()),
                 getValue(time.getSelectedItem().toString()),

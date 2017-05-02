@@ -2,6 +2,8 @@ package com.mikhail.creditexpress.filter;
 
 import android.content.Context;
 import com.mikhail.creditexpress.CreditInfo;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +14,9 @@ import java.util.List;
  */
 public class Filter {
     private List<CreditInfo> credits;
-    private Context context;
 
-    public Filter(List<CreditInfo> credits, Context context) {
+    public Filter(List<CreditInfo> credits) {
         this.credits = credits;
-        this.context = context;
     }
 
     public List<CreditInfo> filtrate(int summ, int time, String method) {
@@ -45,7 +45,7 @@ public class Filter {
             case "лет":
                 return Integer.parseInt(mas[1]) * 365;
             case "млн.":
-                return Integer.parseInt(mas[1]) * 1000000;
+                return (int) (Double.parseDouble(mas[1]) * 1000000);
         }
         return Integer.parseInt(mas[1]);
     }

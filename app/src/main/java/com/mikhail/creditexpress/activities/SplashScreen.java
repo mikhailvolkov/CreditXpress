@@ -6,10 +6,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.mikhail.creditexpress.AnalyticsApplication;
 import com.mikhail.creditexpress.CreditInfo;
 import com.mikhail.creditexpress.Info;
 import com.mikhail.creditexpress.Parseable;
@@ -34,6 +38,7 @@ public class SplashScreen extends Activity {
     protected int _splashTime = 1000;
 
     private Thread splashTread;
+    private Tracker mTracker;
 
     /**
      * Called when the activity is first created.
@@ -41,6 +46,10 @@ public class SplashScreen extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         setContentView(R.layout.start_screen);
         ActionBar actionBar = getActionBar();
         actionBar.hide();
@@ -73,6 +82,12 @@ public class SplashScreen extends Activity {
 
                 } catch (InterruptedException e) {
                 } finally {
+                    mTracker.setScreenName("Пользователь вошел в приложение");
+                    mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+                    mTracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("Action")
+                            .setAction("Share")
+                            .build());
                     finish();
                     i.setClass(sPlashScreen, CreditActivity.class);
                     startActivity(i);

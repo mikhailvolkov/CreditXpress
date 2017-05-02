@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "885559510111",
+    "project_id": "firebase-creditxpress"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885559510111:android:6a7a3cc2e0b914c2",
+        "android_client_info": {
+          "package_name": "com.mikhail.creditexpress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJXlmHakdKa6tpULbmNgTIe5th63s6_pE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-61217032-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
